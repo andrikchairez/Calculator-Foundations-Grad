@@ -1,0 +1,108 @@
+:root{
+    --surfacePrimary: #15182D;
+    --text: #D6D9F0;
+    --action: #364bc5;
+    --surfaceSecondary: #474C67;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai&display=swap');
+
+body {
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    background-color:var(--surfacePrimary);
+}
+
+p {
+    font-family: 'Noto Sans Thai', sans-serif;
+    color: var(--text);
+    font-size: 24px;
+}
+
+.calculatorContainerColumn {
+    display: flex;
+    padding: 32px;
+    flex-direction: column;
+    align-items:center;
+    gap:12px;
+    background-color:var(--surfaceSecondary);
+    box-shadow: 1px 21px 32px 8px rgba(54, 75, 197, 0.17);
+    border-radius: 22px;
+}
+
+.numberDisplayRow {
+    display:flex;
+    flex-grow: 1;
+    padding:10px;
+    justify-content:flex-end;
+    align-items:flex-end;
+    border-radius: 12px;
+    width:276px;
+    background-color:var(--surfacePrimary);
+}
+
+.numbersAndOperatorsRow {
+    display:flex;
+    align-items:flex-start;
+    flex-direction: row;
+    gap:12px;
+}
+
+.numbersWrapRow {
+    display:flex;
+    width: 204px;
+    align-items:flex-start;
+    align-content:flex-start;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.secondaryKey {
+    display:flex;
+    width:60px;
+    height:60px;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius:12px;
+    background-color:var(--surfacePrimary);
+}
+
+.primaryKey {
+    display:flex;
+    width:60px;
+    height:60px;
+    flex-direction:column;
+    justify-content:center;
+    align-items: center;
+    border-radius: 12px;
+    background-color:var(--action);
+}
+
+.operatorColumn {
+    display:flex;
+    flex-direction:column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap:12px;
+}
+
+.clearAndOperateRow {
+    display:flex;
+    flex-direction:row;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap:12px;
+}
+
+#clearBtn, #operateBtn {
+    display:flex;
+    align-self:stretch;
+    width: 132px;
+}
+
+span {
+    color:var(--text);
+}
