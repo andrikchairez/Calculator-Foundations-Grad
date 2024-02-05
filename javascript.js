@@ -13,19 +13,24 @@ let digitOne;
 let digitTwo;
 let result = 0;
 
-function add(a, b){
-    return a + b;
+
+const operate = (operator,digitOne,digitTwo) => {
+    return operator(digitOne,digitTwo);
 }
 
-function subtract(a,b){
-    return a - b;
-};
+function add(digitOne, digitTwo){
+    return digitOne + digitTwo;
+}
 
-function multiply(a,b){
-    return a * b;
-};
+function subtract(digitOne, digitTwo){
+    return digitOne - digitTwo;
+}
 
-function divide(a,b){
-    return a/b;
-};
+function multiply(digitOne, digitTwo){
+    return digitOne * digitTwo;
+}
+
+function divide(digitOne, digitTwo){
+    return digitOne / digitTwo;
+}
 
