@@ -11,8 +11,9 @@
 //digits to hold
 let digitOne;
 let digitTwo;
-let result = 0;
 
+const display = document.querySelector(".displayRow");
+// const displayToInt= parseInt(display.innerHTML);
 
 const operate = (operator,digitOne,digitTwo) => {
     return operator(digitOne,digitTwo);
@@ -34,3 +35,19 @@ function divide(digitOne, digitTwo){
     return digitOne / digitTwo;
 }
 
+//Event handlers for all id's
+const secondaryKeys = document.querySelectorAll(".secondaryKey");
+secondaryKeys.forEach(currentBtn => {
+    currentBtn.addEventListener("click", () => {
+        // Concatenate the current button's content to the display's content
+        display.textContent += currentBtn.textContent;
+    });
+});
+//when a user presses a secondaryKey, I must store the display
+
+const primaryKeys = document.querySelectorAll(".primaryKey");
+primaryKeys.forEach(currentBtn => {
+    currentBtn.addEventListener("click", () => {
+        digitOne = 
+    });
+});
