@@ -1,44 +1,64 @@
-//Global objects to help our 'operate' logic
-const digitOne = { val: "", isTaken: false, }
-const digitTwo = { val: "", isTaken: false, }
-const operator = { func: undefined }
-const buttons = { val: "", }
+//set firsDigit =
+//val:0
+//isTaken: false
 
-//If we want to update the display on the calculator
-const display = document.querySelector(".displayRow");
+//set secondDigit =
+//val:0
+//isTaken: false
 
-//Capture the DOM's event obj while bubbling to get all button types
-const delegatedContainer = document.querySelector(".calculatorContainerColumn");
+//let operator
 
-delegatedContainer.addEventListener('click', event => {
-    const target = event.target
-    if(target.tagName === 'BUTTON'){ //NEEDS TO EXCLUDE OPERATOR BTNS
-        handleButtonEvents()
-       //send to a function that filters string as either operator or digit
-    }
-});
+//user clicks button
+//take the button text
+//display the button text
 
-//Handles the buttons.val
-function handleButtonEvents(){
-    if(buttons.val)
-}
-
-//Math operator functions which will be used to update the .func property
-//in the operator obj
-function add(){
-    return parseFloat(digitOne.val) + parseFloat(digitTwo.val);
-}
-
-function subtract(){
-    return parseFloat(digitOne.val) - parseFloat(digitTwo.val);
-}
-
-function multiply(){
-    return parseFloat(digitOne.val) * parseFloat(digitTwo.val);
-}
-
-function divide(){
-    return parseFloat(digitOne.val) / parseFloat(digitTwo.val);
-}
+//function operate(operator, firstDigit, secondDigit)
+    //
 
 
+//get the dom element display
+
+//get the dom element with classes of operators
+
+//get the dom element with classes of numbers
+
+//for each element with the class of numbers
+    //add a click event
+        //if firstDigit or secondDigit are taken
+            //clear display text
+            //append button text to the display text
+
+//for each element with the class of operators
+    //add a click event
+        //if operators.id == add then operator = add()
+            //else if operators.id == subtract then operator = subtract()
+            //else if operators.id == divide then operator = divide()
+            //else if operators.id == multiply then operator = multiply()
+            //else if operators.id == equals then call operate func
+                //set firstDigit to not taken, and secondDigit
+            //else if operators.id == clear then clear the display
+                //set firstDigit to not taken, and secondDigit
+                //break
+            //else remove one letter from the string
+                //break
+
+        //if display has string
+            //take the display
+            //set stringToNum = parseFloat(display.textContent)
+            //if firstDigit is not taken
+                //firstDigit.val = stringToNum
+                //firstDigit.isTaken = true
+            //else if secondDigit is not taken
+                //secondDigit.val = stringToNum
+                //secondDigit.isTaken = true
+            //else if firstDigit and secondDigit are taken
+                //call the operator function using the operator, firstDigit.val, and secondDigit.val
+                //store the return in firstDigit.val
+                //clear the display
+                //show firstDigit.val in display
+                //display the return of the operate func
+            
+        //else does nothing
+
+    
+    
