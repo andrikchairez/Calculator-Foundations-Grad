@@ -1,53 +1,44 @@
-//Large steps
-//Create basic math operator functions
-//Your calculator is going to contain functions for all of the basic math operators you typically find on calculators, so start by creating functions for the following items and testing them in your browser’s console.
-// add
-// subtract
-// multiply
-// divide
-// A calculator operation will consist of a number, an operator, and another number. For example, 3 + 5. Create three variables for each of the parts of a calculator operation. Create a variable for the first number, the operator, and the second number. You’ll use these variables to update your display later.
-// Create a new function
+//Global objects to help our 'operate' logic
+const digitOne = { val: "", isTaken: false, }
+const digitTwo = { val: "", isTaken: false, }
+const operator = { func: undefined }
+const buttons = { val: "", }
 
-//digits to hold
-let digitOne;
-let digitTwo;
-
+//If we want to update the display on the calculator
 const display = document.querySelector(".displayRow");
-// const displayToInt= parseInt(display.innerHTML);
 
-const operate = (operator,digitOne,digitTwo) => {
-    return operator(digitOne,digitTwo);
-}
+//Capture the DOM's event obj while bubbling to get all button types
+const delegatedContainer = document.querySelector(".calculatorContainerColumn");
 
-function add(digitOne, digitTwo){
-    return digitOne + digitTwo;
-}
-
-function subtract(digitOne, digitTwo){
-    return digitOne - digitTwo;
-}
-
-function multiply(digitOne, digitTwo){
-    return digitOne * digitTwo;
-}
-
-function divide(digitOne, digitTwo){
-    return digitOne / digitTwo;
-}
-
-//Event handlers for all id's
-const secondaryKeys = document.querySelectorAll(".secondaryKey");
-secondaryKeys.forEach(currentBtn => {
-    currentBtn.addEventListener("click", () => {
-        // Concatenate the current button's content to the display's content
-        display.textContent += currentBtn.textContent;
-    });
+delegatedContainer.addEventListener('click', event => {
+    const target = event.target
+    if(target.tagName === 'BUTTON'){ //NEEDS TO EXCLUDE OPERATOR BTNS
+        handleButtonEvents()
+       //send to a function that filters string as either operator or digit
+    }
 });
-//when a user presses a secondaryKey, I must store the display
 
-const primaryKeys = document.querySelectorAll(".primaryKey");
-primaryKeys.forEach(currentBtn => {
-    currentBtn.addEventListener("click", () => {
-        digitOne = 
-    });
-});
+//Handles the buttons.val
+function handleButtonEvents(){
+    if(buttons.val)
+}
+
+//Math operator functions which will be used to update the .func property
+//in the operator obj
+function add(){
+    return parseFloat(digitOne.val) + parseFloat(digitTwo.val);
+}
+
+function subtract(){
+    return parseFloat(digitOne.val) - parseFloat(digitTwo.val);
+}
+
+function multiply(){
+    return parseFloat(digitOne.val) * parseFloat(digitTwo.val);
+}
+
+function divide(){
+    return parseFloat(digitOne.val) / parseFloat(digitTwo.val);
+}
+
+
