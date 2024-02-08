@@ -9,7 +9,7 @@ const firstDigit = { val:4, isTaken: false }
 const secondDigit = { val:4, isTaken: false }
 
 //let operator
-let operator= add();
+let operator= multiply;
 
 //get the dom element display
 const display = document.querySelector(".displayRow");
@@ -30,8 +30,16 @@ numbers.forEach((num) => {
     });
 
 //function operate(operator, firstDigit, secondDigit)
-function operate(operator, firstDigit, secondDigit){
-    
+// let digitOne;
+// let digitTwo;
+// let result = 0;
+
+
+// const operate = (operator,digitOne,digitTwo) => {
+//     return operator(digitOne,digitTwo);
+// }
+function operate(){
+    return operator(firstDigit.val, secondDigit.val);
 }
 
 function add(){
@@ -49,8 +57,27 @@ function multiply(){
 function divide(){
     return firstDigit.val / secondDigit.val;
 }
-//get the dom element with classes of primaryKey
 
+//get the dom element with classes of primaryKey
+const operators = document.querySelectorAll(".primaryKey, .tertiaryKey");
+operators.forEach((key) => {
+    key.addEventListener('click', () => {
+        if(key.id === "divideBtn") {
+            operator = divide;
+        }else if(key.id === "multiplyBtn"){
+            operator = multiply;
+        }else if(key.id === "subtractBtn"){
+            operator = subtract;
+        }else if(key.id === "addBtn"){
+            operator = add;
+        }else if(key.id === "clearBtn"){
+            display.textContent = ""
+            firstDigit.isTaken = false;
+            secondDigit.isTaken = false;
+        };
+        
+    });
+});
 //for each element with the class of operators
     //add a click event
         //if primaryKey.id == add, then operator = add()
