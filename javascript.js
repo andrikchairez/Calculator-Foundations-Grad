@@ -30,7 +30,9 @@ numbers.forEach((num) => {
     });
 
 //function operate(operator, firstDigit, secondDigit)
-
+function operate(operator, firstDigit, secondDigit){
+    
+}
 
 function add(){
     return firstDigit.val + secondDigit.val;
