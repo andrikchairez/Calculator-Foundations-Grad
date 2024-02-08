@@ -1,43 +1,34 @@
-//set firsDigit =
-//val:0
-//isTaken: false
-const firstDigit = { val:4, isTaken: false }
-
-//set secondDigit =
-//val:0
-//isTaken: true
-const secondDigit = { val:4, isTaken: false }
-
-//let operator
+const firstDigit = { val:"", isTaken: false }
+const secondDigit = { val:"", isTaken: false }
 let operator= multiply;
+let operatorActive = false;
 
-//get the dom element display
 const display = document.querySelector(".displayRow");
 
-//for each element with the class of secondaryKey
-    //add a click event
-        //if firstDigit or secondDigit are taken
-            //clear display text
-            //append button text to the display text
 const numbers = document.querySelectorAll(".secondaryKey");
-numbers.forEach((num) => {
-    num.addEventListener('click', () => {
-        if(!firstDigit.isTaken){
-            display.textContent += num.textContent;
-        } else if(firstDigit.isTaken && !secondDigit.isTaken ){
-            display.textContent += num.textContent;
-        }});
+numbers.forEach(button => {
+    button.addEventListener('click', () => {
+        if (operatorActive) {
+            display.textContent = ""; 
+            operatorActive = false; 
+        }
+        display.textContent += button.textContent; 
     });
+});
+// numbers.forEach((num) => {
+//     num.addEventListener('click', () => {
+//         if(!firstDigit.isTaken){
+//             display.textContent += num.textContent;
+//         }else if(firstDigit.isTaken && !secondDigit.isTaken || display.textContent ==){
+//             display.textContent = "";
+//         }
+        
+//         if(!display.textContent == 0 && firstDigit.isTaken && secondDigit.isTaken){
+//             display.textContent += num.textContent;
+//         }
+//         });
+//     });
 
-//function operate(operator, firstDigit, secondDigit)
-// let digitOne;
-// let digitTwo;
-// let result = 0;
-
-
-// const operate = (operator,digitOne,digitTwo) => {
-//     return operator(digitOne,digitTwo);
-// }
 function operate(){
     return operator(firstDigit.val, secondDigit.val);
 }
@@ -62,20 +53,69 @@ function divide(){
 const operators = document.querySelectorAll(".primaryKey, .tertiaryKey");
 operators.forEach((key) => {
     key.addEventListener('click', () => {
+        // if (key.id === "addBtn" || key.id === "subtractBtn" || key.id === "multiplyBtn" || key.id === "divideBtn") {
+        //     operatorActive = true;
+        // }
+        
+        // if(operatorActive){
+        //     const result = operate();
+        //     firstDigit.val = result;
+        //     display.textContent = firstDigit.val;
+        //     secondDigit.isTaken = false;
+        //     console.log(firstDigit,secondDigit);
+        //     return;
+        // }
+
         if(key.id === "divideBtn") {
             operator = divide;
+            operatorActive = true;
+            console.log(operator);
         }else if(key.id === "multiplyBtn"){
             operator = multiply;
+            operatorActive = true;
+            console.log(operator);
         }else if(key.id === "subtractBtn"){
             operator = subtract;
+            operatorActive = true;
+            console.log(operator);
         }else if(key.id === "addBtn"){
             operator = add;
+            operatorActive = true;
+            console.log(operator);
         }else if(key.id === "clearBtn"){
             display.textContent = ""
             firstDigit.isTaken = false;
+            firstDigit.val = "";
             secondDigit.isTaken = false;
-        };
+            secondDigit.val = "";
+            operatorActive = false;
+            console.log(firstDigit,secondDigit);
+            return;
+        }else if(key.id === "back"){
+            let currentDisplay = display.textContent
+            let updatedDisplay = currentDisplay.slice(0, -1);
+            display.textContent = updatedDisplay;
+            console.log("back was clicked")
+            return;
+        }
         
+        if(!firstDigit.isTaken){
+            firstDigit.val = parseFloat(display.textContent);
+            firstDigit.isTaken = true;
+            console.log(firstDigit);
+        }else if(firstDigit.isTaken && !secondDigit.isTaken){
+            secondDigit.val = parseFloat(display.textContent);
+            secondDigit.isTaken = true;
+            console.log(secondDigit);
+        };
+        if(firstDigit.isTaken && secondDigit.isTaken || key.id === "operateBtn"){
+            const result = operate();
+            firstDigit.val = result;
+            display.textContent = firstDigit.val;
+            secondDigit.isTaken = false;
+            console.log(firstDigit,secondDigit);
+            return;
+        };
     });
 });
 //for each element with the class of operators
